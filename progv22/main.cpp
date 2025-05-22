@@ -54,6 +54,11 @@ int main() {
     cout<<"ci sono "<<porro<<" studenti nel corso"<<i+1<<"\t";
     }
     cout<<endl;
+    for(int i=0;i<3;i++){
+    int porro=numero6(i);
+    cout<<"ci sono "<<porro<<" materie nel corso"<<i+1<<"\t";
+    }
+    cout<<endl;
 
     return 0;
 }
@@ -166,3 +171,26 @@ int numero6(int c){
     }
     return cont;
 }
+int math(int c){
+    int cont = 0;
+    string cod;
+    if (c == 0)
+        cod = "C001";
+    else if (c == 1)
+        cod = "C002";
+    else
+        cod = "C003";
+    set<string> uniqueMaterie;
+
+    for (auto it1 = u.begin(); it1 != u.end(); ++it1) {
+        if (it1->codicecorso == cod) {
+            if (uniqueMaterie.find(it1->codicemateria) == uniqueMaterie.end()) {
+                uniqueMaterie.insert(it1->codicemateria);
+                cont++;
+            }
+        }
+    }
+
+    return cont;
+}
+
