@@ -205,4 +205,17 @@ int math(int c){
 
     return cont;
 }
-
+string des(string dis){
+    set<string> uniqueMaterie;
+    string kia[100];
+    int i=0;
+        for (auto it1 = u.begin(); it1 != u.end(); ++it1){
+            if(it1->descrizionemateria.find(dis,0)>-1){
+                if (uniqueMaterie.find(it1->codicemateria) == uniqueMaterie.end()) {
+                uniqueMaterie.insert(it1->codicemateria);
+                kia[i]=it1->codicemateria;
+                i++;
+            }
+            }
+        }
+}
