@@ -3,6 +3,7 @@
 #include <list>
 #include <cstring>
 #include <sstream>
+#include <set>
 using namespace std;
 const string nomef="corsi_studenti.csv";
 struct per{
@@ -50,8 +51,9 @@ int main() {
     //6
     for(int i=0;i<3;i++){
     int porro=numero6(i);
-    cout<<"ci sono "<<porro<<" studenti nel corso"<<i+1;
+    cout<<"ci sono "<<porro<<" studenti nel corso"<<i+1<<"\t";
     }
+    cout<<endl;
 
     return 0;
 }
@@ -67,12 +69,12 @@ void caricadig1() {
     getline(file, line);
     while (getline(file, line)) {
         stringstream ss(line);
-        getline(ss, m.codicecorso, ';');
-        getline(ss, m.descrizionecorso, ';');
-        getline(ss, m.codicemateria, ';');
-        getline(ss, m.descrizionemateria, ';');
-        getline(ss, m.matricola, ';');
-        getline(ss, m.cognome, ';');
+        getline(ss, m.codicecorso, ',');
+        getline(ss, m.descrizionecorso, ',');
+        getline(ss, m.codicemateria, ',');
+        getline(ss, m.descrizionemateria, ',');
+        getline(ss, m.matricola, ',');
+        getline(ss, m.cognome, ',');
         getline(ss, m.nome);
         u.push_back(m);
     }
@@ -83,12 +85,19 @@ void caricadig1() {
 
 int findm2(string q){
     int cont=-1;
+    bool flag=false;
     for(per m : u){
         cont++;
-        if(m.matricola==q)
+        if(m.matricola==q){
             break;
+            flag=true;
+        }
+
     }
+    if(flag)
     return cont;
+    else
+    return -1;
 }
 
 int findco3(const string& is) {
@@ -103,26 +112,23 @@ int findco3(const string& is) {
 }
 
 void findcod4(string cod, per kia[101]) {
-        kia[0].codicecorso="porro";
-        int i=0,j;
-        for (auto it1 = u.begin(); it1 != u.end(); it1++) {
-            if(it1->codicecorso==cod){
-                if(kia[0].codicecorso=="porro"){
-                    kia[i]=*it1;
-                }
-                else{
-                        for (auto it2 = next(it1); it2 != u.end(); it2++) {
-                                if (it1->cognome == it2->cognome and it1->nome==it2->nome){
-                                    i--;
-                                    break;
-                                }
-                                if(it1->codicecorso==cod)
-                                kia[i]=*it1;
-                            }
-                            }
-                        }
-                    }i++;
-                    }
+    int i = 0;
+    set<pair<string, string>> addedStudents;
+    for (auto it1 = u.begin(); it1 != u.end(); ++it1) {
+        if (it1->codicecorso == cod) {
+
+            pair<string, string> studentIdentifier = {it1->cognome, it1->nome};
+
+
+            if (addedStudents.find(studentIdentifier) == addedStudents.end()) {
+
+                kia[i] = *it1;
+                addedStudents.insert(studentIdentifier);
+                i++;
+            }
+        }
+    }
+}
 void findcorso5(string cod, per kia[101]) {
     int i=0,j;
     for (auto it1 = u.begin(); it1 != u.end(); it1++) {
