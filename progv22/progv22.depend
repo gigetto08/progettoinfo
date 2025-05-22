@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1747898201 source:z:\q\progv22\main.cpp
+	<iostream>
+	<fstream>
+	<list>
+	<cstring>
+
