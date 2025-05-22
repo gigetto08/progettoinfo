@@ -219,3 +219,30 @@ string des(string dis){
             }
         }
 }
+void novo9(){
+    cin.ignore();
+    string nome,cognome,materia;
+    cout<<"dimmi cognome\n";
+    getline(cin,cognome);
+    cout<<"dimmi il nome\n";
+    getline(cin,nome);
+    cout<<"dimmi il codice meteria\n";
+    getline(cin,materia);
+    per m={"C003","non-pervenuto",materia,"non-pervenuto",cognome,nome};
+    u.push_back(m);
+}
+void novofile10() {
+    ofstream nuovofile("nuovo_file.csv");
+
+    if (!nuovofile.is_open()) {
+        cout << "Errore nella creazione del file!" << endl;
+        return;
+    }
+    nuovofile << "Codice Corso,Descrizione Corso,Codice Materia,Descrizione         Materia,Matricola,Cognome,Nome\n";
+    for (const per& m : u) {
+        nuovofile << m.codicecorso << ","<< m.descrizionecorso << ","<< m.codicemateria << ","<< m.descrizionemateria << "," << m.matricola << ","<< m.cognome << "," << m.nome << "\n";
+    }
+
+    nuovofile.close();
+    cout << "File 'nuovo_file.csv' creato con successo!" << endl;
+}
