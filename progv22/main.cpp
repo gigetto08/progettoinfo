@@ -86,7 +86,19 @@ void caricadig1() {
 
     file.close();
 }
-
+void stampa_lista() {
+    // Attraversa la lista e stampa i dettagli di ogni elemento
+    for (const per& m : u) {
+        cout << "Codice Corso: " << m.codicecorso << endl;
+        cout << "Descrizione Corso: " << m.descrizionecorso << endl;
+        cout << "Codice Materia: " << m.codicemateria << endl;
+        cout << "Descrizione Materia: " << m.descrizionemateria << endl;
+        cout << "Matricola: " << m.matricola << endl;
+        cout << "Cognome: " << m.cognome << endl;
+        cout << "Nome: " << m.nome << endl;
+        cout << "--------------------------" << endl;
+    }
+}
 
 int findm2(string q){
     int cont=-1;
