@@ -47,6 +47,17 @@ int main() {
     cout<<"Dimmi il codice del corso"<<endl;
     cin>>codice;
     findcod4(codice,audi);
+    cout << "Studenti iscritti al corso con codice " << codice << ":\n";
+    for (int j = 0; j < 101; ++j) {
+    if (audi[j].matricola.empty()) break; // fine array
+
+    cout << "Matricola: " << audi[j].matricola << "\n";
+    cout << "Cognome: " << audi[j].cognome << "\n";
+    cout << "Nome: " << audi[j].nome << "\n";
+    cout << "Codice Corso: " << audi[j].codicecorso << "\n";
+    cout << "Descrizione Corso: " << audi[j].descrizionecorso << "\n";
+    cout << "------------------------\n";
+}
     //da fare cout 5
     //6
     for(int i=0;i<3;i++){
@@ -106,8 +117,8 @@ int findm2(string q){
     for(per m : u){
         cont++;
         if(m.matricola==q){
-            break;
             flag=true;
+            break;
         }
 
     }
